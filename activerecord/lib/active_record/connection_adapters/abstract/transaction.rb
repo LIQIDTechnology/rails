@@ -193,7 +193,7 @@ module ActiveRecord
             begin
               commit_transaction
             rescue Exception
-              transaction.rollback unless transaction.state.completed?
+              rollback_transaction unless transaction.state.completed?
               raise
             end
           end
